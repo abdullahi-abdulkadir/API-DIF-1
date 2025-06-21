@@ -1,0 +1,6 @@
+
+
+[
+  { "id": 1, "title": "Mock todo 1", "completed": false },
+  { "id": 2, "title": "Mock todo 2", "completed": true }
+]
