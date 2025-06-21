@@ -1,4 +1,4 @@
-let request = (obj) => {
+function request(obj){
     return new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
         xhr.open(obj.method, obj.url, true);
@@ -27,7 +27,12 @@ let object = {
 
 const todo = document.querySelector(".todos");
 
-let result = (data) => {
+
+async function getTodos() { 
+
+try {
+  
+    const data = await request(object)
     todo.innerHTML = "";
     data.slice(0, 10).forEach(item => {
         let li = document.createElement("li");
@@ -35,8 +40,19 @@ let result = (data) => {
         todo.appendChild(li);
     });
     console.log(data);
-};
+}catch (error) {
+    console.error("Error:", error);
+  }
+}
 
-request(object)
-    .then(data => result(data))
-    .catch(error => console.error("Error:", error));
+getTodos();
+
+
+
+
+
+
+
+// request(object)
+//     .then(data => result(data))
+//     .catch(error => console.error("Error:", error));
